@@ -5,6 +5,7 @@ import Technologies from './component/Technologies'
 import type { DataType } from './component/type'
 import { Suspense } from 'react'
 import LoadingSkin from './component/LoadingSkin'
+import Footer from './component/Footer'
 const technologiesjson = async (): Promise<DataType[]> => {
   const res = await fetch("/technologies.json")
   const data = await res.json()
@@ -17,9 +18,10 @@ const App = () => {
     <>
       <Nav />
       <Hero />
-      <Suspense fallback={<LoadingSkin/>}>
+      <Suspense fallback={<LoadingSkin />}>
         <Technologies technologiesdata={technologiesdata} />
       </Suspense>
+      <Footer />
 
     </>
   )
