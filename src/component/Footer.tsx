@@ -48,10 +48,10 @@ const Footer = () => {
                 </div>
                 <hr className="md:mt-14 mt-7 border-[#F1F5F9] " />
                 {/* Copyright */}
-                <div className="flex md:justify-between justify-center mt-8 mb-12 gap-4 ">
+                <div className="flex md:justify-between justify-center mt-8 mb-12 gap-4 md:px-0 p-2">
                     <p className="text-[#94A3B8] text-[12px]">© 2026 Dev Stack. All rights reserved.</p>
                     <div>
-                        <ul className="flex mdgap-6 gap-3 text-[#94A3B8]  text-[12px]">
+                        <ul className="flex md:gap-6 gap-3 text-[#94A3B8]  text-[12px]">
                             <li>Privacy</li>
                             <li>Terms</li>
                         </ul>
