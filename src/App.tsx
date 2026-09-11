@@ -3,7 +3,7 @@ import Nav from './component/Nav'
 import Hero from './component/Hero'
 import Technologies from './component/Technologies'
 import type { DataType } from './component/type'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import LoadingSkin from './component/LoadingSkin'
 const technologiesjson = async (): Promise<DataType[]> => {
   const res = await fetch("/public/technologies.json")
@@ -12,7 +12,7 @@ const technologiesjson = async (): Promise<DataType[]> => {
 }
 
 const App = () => {
-  const technologiesdata = technologiesjson()
+  const [technologiesdata] = useState(()=>technologiesjson())
   return (
     <>
       <Nav />
