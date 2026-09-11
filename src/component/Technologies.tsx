@@ -11,16 +11,16 @@ const Technologies = ({technologiesdata}:TechnologiesProps) => {
    
     
     return (
-        <div className='container mx-auto '>
-            <h2 className='text-[#0F172A] font-inter text-4xl  font-extrabold mb-2'>Explore the <span className='bg-linear-to-r from-[#EC4899] to-[#8B5CF6] bg-clip-text text-transparent'>Technologies</span></h2>
-            <p className='text-[16px] font-plusfont text-[#64748B] mb-10 '>Pick one technology per category to build your ideal stack.</p>
-            <div className='grid grid-cols-4 gap-5 '>
-                <div className='col-span-3 grid grid-cols-3 gap-5'>
+        <div className='md:container w-full mx-auto px-2 md:px-0 text-center md:text-left '>
+            <h2 className='text-[#0F172A] font-inter md:text-4xl text-[24px] md:font-extrabold font-bold md:mb-2 mb-1'>Explore the <span className='bg-linear-to-r from-[#EC4899] to-[#8B5CF6] bg-clip-text text-transparent'>Technologies</span></h2>
+            <p className='md:text-[16px] text-[12px] font-plusfont text-[#64748B] mb-10 '>Pick one technology per category to build your ideal stack.</p>
+            <div className='grid md:grid-cols-4 grid-cols-1 md:gap-5 gap-2 '>
+                <div className='col-span-3 grid md:grid-cols-3  grid-cols-1 md:gap-5 gap-2'>
                     {
                         data.map(item=><TechnologiesCard key={item.id} item={item} addstack={addstack} setaddstack={setaddstack}   />)
                     }
                 </div>
-                <div className='col-span-1 '> <Stack  addstack={addstack} setaddstack={setaddstack} /></div>
+                <div className='md:col-span-1 '> <Stack  addstack={addstack} setaddstack={setaddstack} /></div>
             </div>
         </div>
     )
