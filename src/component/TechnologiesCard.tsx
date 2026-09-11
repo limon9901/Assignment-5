@@ -1,17 +1,24 @@
 
-import type { Dispatch, SetStateAction } from 'react';
+import { useState, type Dispatch, type SetStateAction } from 'react';
 import type { DataType } from './type'
 import { FaStar } from 'react-icons/fa'
+import { Bounce, toast } from 'react-toastify';
+
 
 interface ItemType {
     item: DataType;
     addstack: DataType[];
     setaddstack: Dispatch<SetStateAction<DataType[]>>;
+
+
 }
 
 
-const TechnologiesCard = ({ item, addstack, setaddstack }: ItemType) => {
-    
+const TechnologiesCard = ({ item, addstack, setaddstack, }: ItemType) => {
+    const [addData, setaddData] = useState<boolean>(false)
+
+
+
 
     const badgeStyle: Record<string, string> = {
         Popular: "bg-[#F0F9FF] text-[#0EA5E9]",
@@ -27,15 +34,26 @@ const TechnologiesCard = ({ item, addstack, setaddstack }: ItemType) => {
 
     }
 
-    const hanslebutton = (data:DataType)=>{
-        const newdata = [...addstack , data];
-        setaddstack(newdata)
-        
+    const hanslebutton = (data: DataType) => {
+        const newdata = [...addstack, data];
 
+        setaddstack(newdata)
+        setaddData(true)
+        toast.success('Added successfully!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        })
 
     }
-    console.log(addstack)
-    
+
+
 
     return (
         <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
@@ -87,12 +105,11 @@ const TechnologiesCard = ({ item, addstack, setaddstack }: ItemType) => {
 
             {/* Button */}
             <button
-            onClick={()=>hanslebutton(item)}
-                className="mt-3 w-full rounded-lg bg-[#080D1B] py-2.5 text-sm font-medium text-white transition hover:bg-[#151b2c]"
-            >
-                Add to Stack
+                onClick={() => hanslebutton(item)}
+                disabled={addData}
+                className={`mt-3 w-full rounded-lg py-2.5 text-sm font-medium transition  ${addData ? "bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0] cursor-not-allowed" : "bg-[#080D1B] text-white cursor-pointer  "}`}>
+                {addData ? "Added to Stack" : "Add to Stack"}
             </button>
-
         </div>
     )
 }

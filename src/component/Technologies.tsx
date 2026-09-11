@@ -8,6 +8,7 @@ interface TechnologiesProps {
 const Technologies = ({technologiesdata}:TechnologiesProps) => {
     const data = use(technologiesdata)
     const [addstack, setaddstack] =useState<DataType[]>([])
+   
     
     return (
         <div className='container mx-auto '>
@@ -16,10 +17,10 @@ const Technologies = ({technologiesdata}:TechnologiesProps) => {
             <div className='grid grid-cols-4 gap-5 '>
                 <div className='col-span-3 grid grid-cols-3 gap-5'>
                     {
-                        data.map(item=><TechnologiesCard key={item.id} item={item} addstack={addstack} setaddstack={setaddstack} />)
+                        data.map(item=><TechnologiesCard key={item.id} item={item} addstack={addstack} setaddstack={setaddstack}   />)
                     }
                 </div>
-                <div className='col-span-1 '> <Stack /></div>
+                <div className='col-span-1 '> <Stack  addstack={addstack} setaddstack={setaddstack} /></div>
             </div>
         </div>
     )
