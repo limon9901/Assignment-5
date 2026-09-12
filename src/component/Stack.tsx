@@ -1,6 +1,7 @@
-import {  type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import type { DataType } from "./type";
 import { FaXmark } from "react-icons/fa6";
+import { Bounce, toast } from "react-toastify";
 
 interface StackType {
   addstack: DataType[];
@@ -10,7 +11,35 @@ interface StackType {
 const Stack = ({ addstack, setaddstack }: StackType) => {
   const hanleDeleteIcon = (item: DataType) => {
     const removed = addstack.filter(itemid => item.id != itemid.id)
+    toast.error(`${item.name}  Remove`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
     setaddstack(removed)
+
+
+
+  }
+  const handleallremoved = () => {
+    setaddstack([])
+    toast.error("All removed item", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
 
   }
 
@@ -98,7 +127,7 @@ const Stack = ({ addstack, setaddstack }: StackType) => {
 
         {/* Remove All */}
         <button
-          onClick={() => setaddstack([])}
+          onClick={handleallremoved}
           className="mt-15 h-10 w-full rounded-[10px] border border-[#F87171] bg-white text-[16px] font-semibold text-[#DC2626] transition hover:bg-red-50 "
         >
           Remove All
